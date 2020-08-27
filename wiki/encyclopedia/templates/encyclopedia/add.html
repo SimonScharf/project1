@@ -1,0 +1,28 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+
+
+    {% if titleExists %}
+    <h1 style="color:red">Title already exists. Please enter a different title</h1>
+    {% else %}
+    <h1>This is the Add Page</h1>
+    {% endif %}
+
+    <p></p>
+    <form action="{% url 'encyclopedia:index' %}" name="entry_form" method="post">
+          {%csrf_token%}
+          Title: <input type="text" name="title">
+          <button type="submit" class="btn btn-outline-primary" ">Submit</button>
+
+          <p></p>
+          <textarea name="markdown_text" autocomplete="off" placeholder="Enter markdown2 code here..."></textarea>
+
+
+    </form>
+
+{% endblock %}
